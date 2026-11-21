@@ -1,0 +1,34 @@
+# Versions pinned to the Google Colab runtime verified 2026-07 (pip freeze).
+# Exact pins keep deploys reproducible. yt-dlp is kept as a floor (>=) on
+# purpose: it must update to keep working as target sites change — bump the
+# floor once you verify a newer build.
+# 2.3.69 adds the separate send_video(cover=...) API and includes current fixes.
+pyrofork==2.3.69
+# uvloop: replaces Python's default asyncio with libuv — 2-4x faster I/O for uploads.
+uvloop==0.22.1
+TgCrypto==1.2.5
+aiohttp==3.14.1
+defusedxml==0.7.1
+# yt-dlp: floor, not an exact pin — it needs frequent updates as sites change.
+yt-dlp>=2026.6.9
+aria2p==0.12.1
+py7zr==1.1.3
+rarfile==4.2
+python-dotenv==1.2.2
+google-api-python-client==2.197.0
+google-auth==2.49.0
+google-auth-httplib2==0.4.0
+psutil==5.9.5
+# Pillow: used by the smart thumbnail scorer to choose clean HD Telegram previews.
+Pillow==11.3.0
+# seedrcc: Seedr.cc API wrapper — works for free + premium accounts.
+# Uses the same internal endpoints as the Kodi/Chrome extensions.
+# REST API v1 (Basic Auth) returns 401 for free accounts — seedrcc is required.
+seedrcc==2.1.2
+# pyngrok removed. The webhook receiver uses a Cloudflare tunnel; the old
+# Serveo/UptimeRobot keep-alive was removed entirely.
+# httpx: HTTP client used by services/seedr.py for all Seedr API strategies.
+# httpx[socks]: adds SOCKS5 proxy support — needed when SEEDR_PROXY=socks5://...
+httpx[socks]==0.28.1
+# PySocks: SOCKS5 support for requests-based clients (socks5:// proxies).
+PySocks==1.7.1
